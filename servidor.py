@@ -17,6 +17,11 @@ app = FastAPI(
 )
 
 
+# CHECK SALUD
+@app.get("/health")
+def health_check():
+    return 'OK'
+
 
 # GENERAR OPENAPI
 @app.get("/openapi.yaml", summary="Obtener especificación OpenAPI en YAML")
