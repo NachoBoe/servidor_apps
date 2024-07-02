@@ -1,5 +1,4 @@
 pyyaml
-typing
 requests
 fastapi
 uvicorn
