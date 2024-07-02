@@ -1,5 +1,4 @@
-
-yaml
+pyyaml
 typing
 requests
 fastapi
