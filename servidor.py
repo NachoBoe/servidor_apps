@@ -7,7 +7,7 @@ from fastapi.responses import Response
 
 # CREAR APP
 app = FastAPI(
-    title="API de Búsqueda de Elementos de Bantotal",
+    title="API de Búsqueda de Componentes de Bantotal",
     description="Esta API permite buscar información sobre distintos componentes que conforman el software de Bantotals.",
     version="1.0.0",
     servers=[
@@ -28,11 +28,6 @@ def get_openapi_yaml():
     openapi_json['openapi'] = '3.0.3'  # Especificar la versión de OpenAPI
     openapi_yaml = yaml.dump(openapi_json, allow_unicode=True)
     return Response(content=openapi_yaml, media_type="application/x-yaml")
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-
 
 #  APLICACION DE TABLAS
 
@@ -87,4 +82,10 @@ def search_by_attribute(
         raise HTTPException(status_code=404, detail="Attribute not found")
     return results
 
+
+
+# LANZAR APP
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
