@@ -31,12 +31,22 @@ components:
       title: ValidationError
       type: object
 info:
-  description: Esta API permite buscar información en un archivo JSON de tablas y
-    atributos.
-  title: API de Búsqueda de Tablas
+  description: Esta API permite buscar información sobre distintos componentes que
+    conforman el software de Bantotals.
+  title: API de Búsqueda de Componentes de Bantotal
   version: 1.0.0
 openapi: 3.0.3
 paths:
+  /health:
+    get:
+      operationId: health_check_health_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      summary: Health Check
   /openapi.yaml:
     get:
       description: Retorna la especificación OpenAPI en formato YAML.
@@ -48,11 +58,11 @@ paths:
               schema: {}
           description: Successful Response
       summary: Obtener especificación OpenAPI en YAML
-  /search/by_attribute:
+  /tablas/buscar_atributo:
     get:
       description: Busca un atributo específico en el archivo JSON. Puede filtrar
         por tabla.
-      operationId: search_by_attribute_search_by_attribute_get
+      operationId: search_by_attribute_tablas_buscar_atributo_get
       parameters:
       - description: String a buscar dentro de los códigos de los atributos
         in: query
@@ -86,10 +96,10 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
           description: Validation Error
       summary: Buscar por Atributo
-  /search/by_table:
+  /tablas/buscar_tablas:
     get:
       description: Busca una tabla específica en el archivo JSON.
-      operationId: search_by_table_search_by_table_get
+      operationId: search_by_table_tablas_buscar_tablas_get
       parameters:
       - description: String a buscar dentro de los nombres de las tablas
         in: query
@@ -112,17 +122,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
           description: Validation Error
       summary: Buscar por Tabla
-  /tables:
-    get:
-      description: Obtiene una lista de todas las tablas en el archivo JSON.
-      operationId: get_all_tables_tables_get
-      responses:
-        '200':
-          content:
-            application/json:
-              schema: {}
-          description: Successful Response
-      summary: Obtener todas las Tablas
 servers:
 - description: Servidor local
   url: https://127.0.0.1:8000
